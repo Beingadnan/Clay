@@ -1,0 +1,87 @@
+.main {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Light grey background */
+  padding: 16px; /* Spacing around the content */
+}
+
+.content, .uparmain, .mainContent, .footer {
+  margin-bottom: 16px; /* Spacing between sections */
+  display: flex;
+  align-items: center;
+
+}
+
+.heading {
+  font-size: 20px; /* Typography for the heading */
+  font-weight: bold;
+  flex-grow: 1; /* Heading takes up the rest of the space */
+}
+
+.search, .action, .enrichData, .default, .rows, .columns, .filter, .Sort {
+  margin-left: 16px;
+}
+
+.search input[type="text"] {
+  border: 1px solid #ced4da; /* Border color for inputs */
+  padding: 8px; /* Padding within input fields */
+  border-radius: 4px; /* Rounded borders for input fields */
+}
+
+.tr {
+  background-color: white; /* Background for table rows */
+  height: 40px; /* Height for table rows */
+}
+
+.mainContent table {
+  width: 100%; /* Table occupies full width */
+  border-collapse: collapse; /* Removes spacing around and between cells */
+}
+
+.mainContent th, .mainContent td {
+  text-align: left; /* Align text to the left */
+  border: 1px solid #dee2e6; /* Border color for table cells */
+  padding: 8px; /* Padding within table cells */
+}
+
+.mainContent th {
+  background-color: #e9ecef; /* Light background for table headers */
+  font-weight: normal; /* Normal weight for header text */
+}
+
+.mainContent th Button {
+  text-transform: none; /* Prevent uppercase transformation */
+}
+
+.tr td:first-child {
+  font-weight: bold; /* Making the first cell of rows bold (usually for indexes or identifiers) */
+}
+
+.tr Button {
+  margin-right: 4px; /* Spacing between buttons and icons */
+}
+
+.domainColumn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tr .inpt {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.footer Button {
+  margin-right: 16px; 
+}
+.footer{
+  bottom: 0;
+  position: fixed;
+  z-index: 100;
+}
+.mainContent{
+  overflow: scroll;
+  
+}
