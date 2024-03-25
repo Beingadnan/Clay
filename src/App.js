@@ -1,7 +1,7 @@
 import React from 'react'
-// import WorkPlace from './components/WorkPlace'
+import WorkPlace from './components/WorkPlace'
 import TableContent from './components/TableContent'
-// import SearchWithDatalist from './Data'
+import SearchWithDatalist from './Data'
 
 
 

@@ -1,20 +1,20 @@
 .main {
   font-family: 'Arial', sans-serif;
-  background-color: #f8f9fa; /* Light grey background */
-  padding: 16px; /* Spacing around the content */
+  background-color: #f8f9fa; 
+  padding: 16px; 
 }
 
 .content, .uparmain, .mainContent, .footer {
-  margin-bottom: 16px; /* Spacing between sections */
+  margin-bottom: 16px; 
   display: flex;
   align-items: center;
 
 }
 
 .heading {
-  font-size: 20px; /* Typography for the heading */
+  font-size: 20px; 
   font-weight: bold;
-  flex-grow: 1; /* Heading takes up the rest of the space */
+  flex-grow: 1;
 }
 
 .search, .action, .enrichData, .default, .rows, .columns, .filter, .Sort {
@@ -22,42 +22,47 @@
 }
 
 .search input[type="text"] {
-  border: 1px solid #ced4da; /* Border color for inputs */
-  padding: 8px; /* Padding within input fields */
-  border-radius: 4px; /* Rounded borders for input fields */
+  border: 1px solid #ced4da; 
+  padding: 5px; 
+  border-radius: 4px;
+}
+.search{
+  border: 1px solid black;
+  background: rgb(230, 225, 225);
 }
 
+
 .tr {
-  background-color: white; /* Background for table rows */
-  height: 40px; /* Height for table rows */
+  background-color: white; 
+  height: 40px; 
 }
 
 .mainContent table {
-  width: 100%; /* Table occupies full width */
-  border-collapse: collapse; /* Removes spacing around and between cells */
+  width: 100%; 
+  border-collapse: collapse; 
 }
 
 .mainContent th, .mainContent td {
-  text-align: left; /* Align text to the left */
-  border: 1px solid #dee2e6; /* Border color for table cells */
-  padding: 8px; /* Padding within table cells */
+  text-align: left; 
+  border: 1px solid #dee2e6; 
+  padding: 8px; 
 }
 
 .mainContent th {
-  background-color: #e9ecef; /* Light background for table headers */
-  font-weight: normal; /* Normal weight for header text */
+  background-color: #e9ecef; 
+  font-weight: normal;
 }
 
 .mainContent th Button {
-  text-transform: none; /* Prevent uppercase transformation */
+  text-transform: none; 
 }
 
 .tr td:first-child {
-  font-weight: bold; /* Making the first cell of rows bold (usually for indexes or identifiers) */
+  font-weight: bold; 
 }
 
 .tr Button {
-  margin-right: 4px; /* Spacing between buttons and icons */
+  margin-right: 4px; 
 }
 
 .domainColumn {
@@ -84,4 +89,73 @@
 .mainContent{
   overflow: scroll;
   
+}
+
+/* Mobile Devices */
+@media (max-width: 599px) {
+  .main {
+    padding: 8px; /* Smaller padding */
+  }
+
+  .content, .uparmain, .mainContent, .footer {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: stretch; /* Stretch items to fill width */
+  }
+
+  .heading, .search, .action, .enrichData, .default, .rows, .columns, .filter, .Sort {
+    font-size: 16px; /* Smaller text */
+    margin-left: 8px; /* Smaller margins */
+  }
+
+  .search input[type="text"] {
+    padding: 4px; /* Smaller padding */
+  }
+
+  .mainContent, .footer {
+    margin-bottom: 8px; /* Smaller margin */
+  }
+
+  .mainContent {
+    overflow-x: auto; /* Allow horizontal scrolling for tables */
+  }
+
+  .tr Button, .footer Button {
+    padding: 4px 8px; /* Smaller buttons */
+    font-size: 14px; /* Smaller font size for buttons */
+  }
+}
+
+/* Tablets */
+@media (min-width: 600px) and (max-width: 899px) {
+  .heading, .search, .action, .enrichData, .default, .rows, .columns, .filter, .Sort {
+    font-size: 18px; /* Slightly larger text */
+  }
+}
+
+/* Desktops and Above */
+@media (min-width: 900px) {
+ 
+  .main {
+    padding: 20px; /* More padding */
+  }
+
+  .content, .uparmain, .mainContent, .footer {
+    margin-bottom: 20px; /* Increased spacing */
+  }
+
+  .heading, .search, .action, .enrichData, .default, .rows, .columns, .filter, .Sort {
+    font-size: 20px; /* Base size or increase as needed */
+  }
+}
+
+.actionstyles{
+  box-shadow: 0 0 10px;
+  width: 8rem;
+  margin-top: 1rem;
+  position: fixed;
+  z-index: 9999;
+  background: rgb(254, 243, 243);
+}
+.selectedRow {
+  background-color: lightblue;
 }

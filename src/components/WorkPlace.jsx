@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import WorkPlaceStyle from "./WorkPlace.module.css";
+import TableContent from "./TableContent";
 
 Modal.setAppElement("#root");
 
@@ -8,7 +9,8 @@ export default function WorkPlace() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [folders, setFolders] = useState([]);
   const [newFolderName, setNewFolderName] = useState("");
-  
+  const [showTableContent, setShowTableContent] = useState(false);
+ 
 
   function handleOpenNewFolderModal() {
     setModalIsOpen(true);
@@ -22,12 +24,20 @@ export default function WorkPlace() {
     setNewFolderName(event.target.value);
   }
 
+
+
   function handleCreateNewFolder() {
     if (newFolderName.trim() !== "") {
       setFolders([...folders, newFolderName]);
       setNewFolderName("");
       handleCloseModal();
     }
+  }
+
+
+  function handleClick(){
+    setShowTableContent((prevShowTableContent) => !prevShowTableContent);
+
   }
 
   return (
@@ -40,7 +50,7 @@ export default function WorkPlace() {
         >
           New Folder
         </button>
-        <button  className={WorkPlaceStyle.btn}>New Table</button> <br />
+        <button  className={WorkPlaceStyle.btn} onClick={handleClick}>New Table</button> <br />
       </div>
       <p className={WorkPlaceStyle.inpt}>
         {" "}
@@ -68,6 +78,8 @@ export default function WorkPlace() {
         />
         <button onClick={handleCreateNewFolder}>Create</button>
       </Modal>
+      {showTableContent && <TableContent />}
+
     </>
   );
 }

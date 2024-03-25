@@ -7,6 +7,9 @@ import MenuItem from "@mui/material/MenuItem";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import CircularProgress from "@mui/material/CircularProgress";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 export default function TableContent() {
   const [showDatalist, setShowDatalist] = useState(false);
@@ -14,6 +17,7 @@ export default function TableContent() {
   const [queuing, setQueuing] = useState(false);
   const [showQueueSuccess, setShowQueueSuccess] = useState(false);
   const [rows, setRows] = useState([{}, {}, {}, {}]);
+  const [allSelected, setAllSelected] = useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,6 +34,15 @@ export default function TableContent() {
   const toggleDatalist = () => {
     setShowDatalist(!showDatalist);
   };
+
+  const handleSelectAll = () => {
+    setAllSelected((prevState) => !prevState);
+  };
+  const handleDeleteAll = () => {
+    setRows([]);
+    setAllSelected(false);
+  };
+
   const handlePlayClick = (index) => {
     // Simulate a process being queued
     setQueuing(true);
@@ -38,8 +51,8 @@ export default function TableContent() {
       setShowQueueSuccess(true);
       setTimeout(() => {
         setShowQueueSuccess(false);
-      }, 2000); // Hide the success message after 2 seconds
-    }, 2000); // Simulate a queue delay of 2 seconds
+      }, 2000); 
+    }, 2000); 
   };
   return (
     <>
@@ -50,9 +63,10 @@ export default function TableContent() {
           </span>
           <span className={styles.search}>
             {" "}
+            <FontAwesomeIcon icon={faSearch} />
             <input type="text" placeholder="search" />
             <Button variant="text" style={{ color: "black" }}>
-              Search
+             Search
             </Button>
           </span>
           <span className={styles.action}>
@@ -60,7 +74,7 @@ export default function TableContent() {
               Actions
             </Button>
             {showDatalist && (
-              <div>
+              <div className={styles.actionstyles}>
                 <Button variant="text" style={{ color: "black" }}>
                   Find People
                 </Button>
@@ -74,7 +88,7 @@ export default function TableContent() {
             )}
           </span>
           <span className={styles.enrichData}>
-            <Button variant="text" style={{ color: "black" }}>
+            <Button variant="contained" style={{ color: "black" }}>
               Enrich Data
             </Button>
           </span>
@@ -86,11 +100,6 @@ export default function TableContent() {
               Default view
             </Button>
           </span>
-          {/* <span className={styles.rows}>
-            <Button variant="text" style={{ color: "black" }}>
-              5/5 Rows
-            </Button>
-          </span> */}
           <span className={styles.rows}>
             <Button variant="text" style={{ color: "black" }}>
               {rows.length}/{rows.length} Rows
@@ -115,7 +124,12 @@ export default function TableContent() {
         <div className={styles.mainContent}>
           <table>
             <tr className={styles.tr}>
-              <td>1</td>
+              <td>
+                {" "}
+                <Button onClick={handleSelectAll} variant="text">
+                  select all
+                </Button>
+              </td>
               <th>
                 <Button
                   aria-controls="simple-menu"
@@ -334,31 +348,58 @@ export default function TableContent() {
 
             <tbody>
               {rows.map((row, index) => (
-                <tr key={index} className={styles.tr}>
+                <tr
+                  key={index}
+                  className={`${styles.tr} ${
+                    allSelected ? styles.selectedRow : ""
+                  }`}
+                >
                   <td>{index + 1}</td>
-                  <td>
+                  <td className={allSelected ? styles.selectedRow : ""}>
                     <input type="text" className={styles.inpt} />
                   </td>
-                  <td>
+                  <td className={allSelected ? styles.selectedRow : ""}>
                     <input type="text" className={styles.inpt} />
                   </td>
-                  <td>
+                  <td className={allSelected ? styles.selectedRow : ""}>
                     <input type="text" className={styles.inpt} />
                   </td>
-                  <Button>
+                  <Button className={allSelected ? styles.selectedRow : ""}>
                     <PlayArrowIcon onClick={() => handlePlayClick(1)} />
                   </Button>
                   {queuing && <CircularProgress size={24} />}
                   {showQueueSuccess && <CheckCircleOutlineIcon />}
-                  <td>
+                  <td className={allSelected ? styles.selectedRow : ""}>
                     <input type="text" className={styles.inpt} />
                   </td>
                 </tr>
               ))}
             </tbody>
+            {allSelected && (
+              <tfoot>
+                <tr className={styles.tr}>
+                  <td colSpan="100%">
+                    {" "}
+                    {/* Span across all columns */}
+                    <Button
+                      onClick={handleDeleteAll}
+                      variant="contained"
+                      color="secondary"
+                    >
+                      Delete All Selected
+                    </Button>
+                  </td>
+                </tr>
+              </tfoot>
+            )}
           </table>
 
-          <Button onClick={addNewRow} variant="text" style={{ color: "black" }} className={styles.newrow}>
+          <Button
+            onClick={addNewRow}
+            variant="text"
+            style={{ color: "black" }}
+            className={styles.newrow}
+          >
             +New row
           </Button>
         </div>
