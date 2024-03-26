@@ -66,9 +66,10 @@ export default function TableContent() {
           <span className={styles.heading}>
             Copy of: Get Email and Phone Number from Name and Company
           </span>
+          <FontAwesomeIcon icon={faSearch} />
           <span className={styles.search}>
             {" "}
-            <FontAwesomeIcon icon={faSearch} />
+            {/* <FontAwesomeIcon icon={faSearch} /> */}
             <input type="text" placeholder="search" />
             <Button variant="text" style={{ color: "black" }}>
              Search
