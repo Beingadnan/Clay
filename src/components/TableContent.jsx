@@ -18,6 +18,11 @@ export default function TableContent() {
   const [showQueueSuccess, setShowQueueSuccess] = useState(false);
   const [rows, setRows] = useState([{}, {}, {}, {}]);
   const [allSelected, setAllSelected] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -70,9 +75,13 @@ export default function TableContent() {
             </Button>
           </span>
           <span className={styles.action}>
-            <Button onClick={toggleDatalist} style={{ color: "black" }}>
+          
+            <Button onClick={toggleDatalist} style={{ color: "black" }}  >
+
               Actions
+              <i class="fa-solid fa-caret-down"></i>
             </Button>
+           
             {showDatalist && (
               <div className={styles.actionstyles}>
                 <Button variant="text" style={{ color: "black" }}>
@@ -89,6 +98,7 @@ export default function TableContent() {
           </span>
           <span className={styles.enrichData}>
             <Button variant="contained" style={{ color: "black" }}>
+            <i class="fa-solid fa-bolt"></i>
               Enrich Data
             </Button>
           </span>
@@ -102,21 +112,25 @@ export default function TableContent() {
           </span>
           <span className={styles.rows}>
             <Button variant="text" style={{ color: "black" }}>
+            <i class="fa-solid fa-list-ul"></i> 
               {rows.length}/{rows.length} Rows
             </Button>
           </span>
           <span className={styles.columns}>
             <Button variant="text" style={{ color: "black" }}>
+            <i class="fa-solid fa-table-columns"></i>
               16/21 Columns
             </Button>
           </span>
           <span className={styles.filter}>
             <Button variant="text" style={{ color: "black" }}>
+            <i class="fa-solid fa-filter"></i>
               Filter
             </Button>
           </span>
           <span className={styles.Sort}>
             <Button variant="text" style={{ color: "black" }}>
+            <i class="fa-solid fa-up-down"></i> 
               Sort
             </Button>
           </span>
@@ -400,22 +414,36 @@ export default function TableContent() {
             style={{ color: "black" }}
             className={styles.newrow}
           >
-            +New row
+            New row
+            <i className="fa-solid fa-plus"></i> 
           </Button>
         </div>
         <div className={styles.footer}>
           <Button onClick={addNewRow} variant="text" style={{ color: "black" }}>
+          <i className="fa-solid fa-plus"></i> 
             New row
           </Button>
           <Button variant="text" style={{ color: "black" }}>
+          <i className="fa-solid fa-upload"></i>
             Import
           </Button>
           <Button variant="text" style={{ color: "black" }}>
+          <i className="fa-solid fa-file-export"></i>
             Export
           </Button>
-          <Button variant="text" style={{ color: "black" }}>
+          <Button variant="text" style={{ color: "black" }} onClick={togglePopup}>
+          <i className="fas fa-share"></i>
             Share
           </Button>
+          {showPopup && (
+        <div className={styles.popup}>
+          <div className={styles.popupContent}>
+            <span className={styles.close} onClick={togglePopup}>&times;</span>
+            <h4> Make your columns, input mappings, and first row of data visible to anyone by sharing this table as a template.</h4>
+            <p>This is the content of the share window.</p>
+          </div>
+        </div>
+      )}
         </div>
       </div>
     </>

@@ -56,7 +56,10 @@
 .mainContent th Button {
   text-transform: none; 
 }
+.mainContent{
+  overflow: scroll;
 
+}
 .tr td:first-child {
   font-weight: bold; 
 }
@@ -85,6 +88,7 @@
   bottom: 0;
   position: fixed;
   z-index: 100;
+  background-color: white;
 }
 .mainContent{
   overflow: scroll;
@@ -158,4 +162,26 @@
 }
 .selectedRow {
   background-color: lightblue;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.popupContent {
+  text-align: center;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
 }
